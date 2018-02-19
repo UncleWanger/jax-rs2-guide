@@ -49,6 +49,12 @@ public class BookResource {
         return book;
     }
 
+
+    /**
+     * this is a git test
+     * @param abookId
+     * @return
+     */
     @Path("{bookId:[a-z]*}/{abookId:[0-9]*}")
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
