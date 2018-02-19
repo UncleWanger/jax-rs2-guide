@@ -13,8 +13,23 @@ function rest(restUrl, httpMethod, param, contenttype, datatype, callback) {
 			jQuery('#resultDiv').html(e);
 		}
 	});
+
 	request.fail(function(textStatus, errorThrown) {
 		jQuery('#resultDiv').html(errorThrown + " status=" + textStatus.status);
+	});
+
+	var request = jQuery.ajax({type:httpMethod,url:restUrl,data:param,contentType:contenttype,dataType:dataType});
+	request.done(function(data){
+		try{
+			if(data === null || data === undefined) {
+				jQuery("#resultDiv").html("no result fromm server");
+            }else{
+				callback(data);
+			}
+		}catch(e){
+			jQuery('#resultDiv').html(e);
+		}
+
 	});
 }
 /*GET*/
